@@ -1,4 +1,4 @@
-<h1 align="center">GithubUser</h1>
+<h1 align="center">Neewz</h1>
 
 <p align="center">
   <a href="https://github.com/ariastro/Neewz/blob/master/LICENSE.txt"><img alt="License" src="https://img.shields.io/github/license/ariastro/Neewz.svg"/></a>
