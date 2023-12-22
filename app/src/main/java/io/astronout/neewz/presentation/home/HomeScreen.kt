@@ -107,7 +107,10 @@ fun HomeScreen(
                     verticalArrangement = Arrangement.spacedBy(12.dp)
                 ) {
                     items(items = uiState.articles, key = { it.title }) {
-                        NewsItem(article = it)
+                        NewsItem(
+                            article = it,
+                            onDetailNews = viewModel::onEvent
+                        )
                     }
                 }
             }

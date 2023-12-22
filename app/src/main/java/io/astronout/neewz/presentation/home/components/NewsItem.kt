@@ -1,5 +1,6 @@
 package io.astronout.neewz.presentation.home.components
 
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -14,16 +15,23 @@ import androidx.compose.ui.unit.dp
 import io.astronout.core.components.Gap
 import io.astronout.core.components.NetworkImage
 import io.astronout.core.domain.model.Article
+import io.astronout.core.utils.formatDate
+import io.astronout.neewz.presentation.home.HomeScreenEvent
 import io.astronout.neewz.ui.theme.Neutral40
 import io.astronout.neewz.ui.theme.Primary40
 
 @Composable
 fun NewsItem(
     article: Article,
+    onDetailNews: (HomeScreenEvent) -> Unit,
     modifier: Modifier = Modifier,
 ) {
     Row(
-        modifier = modifier.fillMaxWidth(),
+        modifier = modifier
+            .fillMaxWidth()
+            .clickable {
+                onDetailNews(HomeScreenEvent.DetailArticle(article))
+            },
         horizontalArrangement = Arrangement.spacedBy(10.dp)
     ) {
         NetworkImage(
@@ -46,7 +54,7 @@ fun NewsItem(
             )
             Gap(size = 3.dp)
             Text(
-                text = article.publishedAt,
+                text = article.publishedAt.formatDate(),
                 style = MaterialTheme.typography.bodyMedium,
                 color = Neutral40
             )

@@ -4,10 +4,12 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.ramcosta.composedestinations.navigation.DestinationsNavigator
 import dagger.hilt.android.lifecycle.HiltViewModel
+import io.astronout.core.domain.model.Article
 import io.astronout.core.domain.model.ViewState
 import io.astronout.core.domain.usecase.NoParams
 import io.astronout.core.domain.usecase.TopHeadlineUsecase
 import io.astronout.core.vo.Resource
+import io.astronout.neewz.presentation.destinations.DetailScreenDestination
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.launchIn
@@ -32,7 +34,7 @@ class HomeViewModel @Inject constructor(
 
     fun onEvent(event: HomeScreenEvent) {
         when (event) {
-            is HomeScreenEvent.DetailArticle -> TODO()
+            is HomeScreenEvent.DetailArticle -> navigateToDetailNews(event.article)
         }
     }
 
@@ -56,6 +58,10 @@ class HomeViewModel @Inject constructor(
                 }
             }
         }.launchIn(viewModelScope)
+    }
+
+    private fun navigateToDetailNews(article: Article) {
+        navigator.navigate(DetailScreenDestination(article))
     }
 
 }

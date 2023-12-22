@@ -9,7 +9,7 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.ui.Modifier
 import com.ramcosta.composedestinations.DestinationsNavHost
 import dagger.hilt.android.AndroidEntryPoint
-import io.astronout.neewz.presentation.home.NavGraphs
+import io.astronout.neewz.presentation.NavGraphs
 import io.astronout.neewz.ui.theme.NeewzTheme
 
 @AndroidEntryPoint
@@ -19,7 +19,7 @@ class MainActivity : ComponentActivity() {
         setContent {
             NeewzTheme {
                 Scaffold(
-                    modifier = Modifier.fillMaxSize(),
+                    modifier = Modifier.fillMaxSize()
                 ) {
                     DestinationsNavHost(
                         modifier = Modifier.padding(it),
